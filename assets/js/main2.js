@@ -143,3 +143,42 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+/* ================= DEPOIMENTOS ================= */
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('depoimentos-container');
+  if (!container) return;
+
+  fetch('partials/depoimentos.html')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro ao carregar depoimentos');
+      }
+      return response.text();
+    })
+    .then(html => {
+      container.innerHTML = html;
+      iniciarCarrosselDepoimentos();
+    })
+    .catch(err => {
+      console.error(err);
+      container.innerHTML =
+        '<p style="text-align:center;color:#999">Depoimentos indisponíveis no momento.</p>';
+    });
+});
+
+function iniciarCarrosselDepoimentos() {
+  const depoimentos = document.querySelectorAll('.depoimento');
+  if (!depoimentos.length) return;
+
+  let index = 0;
+
+  depoimentos.forEach((item, i) => {
+    item.style.display = i === 0 ? 'block' : 'none';
+  });
+
+  setInterval(() => {
+    depoimentos[index].style.display = 'none';
+    index = (index + 1) % depoimentos.length;
+    depoimentos[index].style.display = 'block';
+  }, 7000);
+}
