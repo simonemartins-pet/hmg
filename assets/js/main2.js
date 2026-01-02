@@ -172,13 +172,36 @@ function iniciarCarrosselDepoimentos() {
 
   let index = 0;
 
-  depoimentos.forEach((item, i) => {
-    item.style.display = i === 0 ? 'block' : 'none';
-  });
-
   setInterval(() => {
-    depoimentos[index].style.display = 'none';
+    depoimentos[index].classList.remove('ativo');
     index = (index + 1) % depoimentos.length;
-    depoimentos[index].style.display = 'block';
+    depoimentos[index].classList.add('ativo');
   }, 7000);
+  let startX = 0;
+
+const wrapper = document.querySelector('.depoimentos-wrapper');
+if (!wrapper) return;
+
+wrapper.addEventListener('touchstart', e => {
+  startX = e.touches[0].clientX;
+});
+
+wrapper.addEventListener('touchend', e => {
+  const endX = e.changedTouches[0].clientX;
+  const diff = startX - endX;
+
+  if (Math.abs(diff) < 50) return;
+
+  depoimentos[index].classList.remove('ativo');
+
+  if (diff > 0) {
+    index = (index + 1) % depoimentos.length;
+  } else {
+    index = (index - 1 + depoimentos.length) % depoimentos.length;
+  }
+
+  depoimentos[index].classList.add('ativo');
+});
+
 }
+
