@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simone Martins | Pet Sitter</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <header class="topo">
+        <div class="logo">
+            <img src="img/icone.webp" alt="Logo Simone Martins" class="logo-img">
+            <span class="nome">Simone Martins</span>
+        </div>
+        
+        <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+        
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html" class="ativo">Início</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+				 <li><a href="faq.html">FAQ</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+
+            </ul>
+        </nav>
+
+        <div class="acoes">
+            <a href="#agendamento" class="btn btn-secondary">📅 Agendar</a>
+            <a href="https://wa.me/5521972045256" target="_blank" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <span class="badge">🐾 PET SITTER NO GRAJAÚ (RJ)</span>
+                <h1>Seu pet feliz e seguro, <span class="highlight-red">mesmo</span> quando você está <span class="highlight-green">fora</span>.</h1>
+                <p>Hospedagem domiciliar e cuidados especiais com quem ama o que faz.</p>
+				<p>Atendo também bairros vizinhos — fale comigo e consulte disponibilidade!</p>
+
+                <div class="hero-buttons">
+                    <a href="#agendamento" class="btn btn-primary">Reservar agora</a>
+                    <a href="servicos.html" class="btn btn-secondary">Ver serviços</a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+				<img src="img/pet_hero.webp" id="heroImage" alt="Simone Martins Pet Sitter" style="transition: opacity 0.5s ease;">
+                <div class="floating-card">
+                    <i class="fas fa-heart" style="color: #fb7185;"></i>
+                    <span class="floating-text">Pets cuidados com amor</span>
+                </div>
+            </div>
+    
+</div>
+        </section>
+
+        <section id="sobre" class="agendamento-box" style="margin-top: 1rem;">
+            <div style="text-align: center; margin-bottom: 1rem;">
+                <span class="badge">QUEM SOU</span>
+                <h2>Dedicação total ao seu melhor amigo</h2>
+            </div>
+            <p style="text-align: center; color: var(--text-gray); max-width: 700px; margin: 0 auto;">
+                Sou Simone Martins, especialista em cuidados pet. Meu objetivo é oferecer tranquilidade para os tutores 
+                e o máximo de conforto e diversão para os animais, sempre respeitando o tempo e a rotina de cada um.
+            </p>
+        </section>
+
+		<section id="servicos" class="servicos-grid" style="background: transparent; padding: 2rem 1rem;">
+		  <div style="text-align: center; margin-bottom: 1rem;">
+			<span class="badge">SERVIÇOS</span>
+			<h2 style="font-size: 2.5rem;">Cuidados especiais para seu pet</h2>
+			<p style="color: var(--text-gray); max-width: 600px; margin: 1rem auto;">
+			  Ofereço serviços personalizados para garantir o bem-estar do seu companheiro no conforto do lar.
+			</p>
+		  </div>
+
+		  <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+
+			<div class="service-card rosa">
+			  <div class="card-header">
+				<i class="fa-solid fa-house fa-2x" style="color: var(--primary-pink); margin-bottom: 1rem;"></i>
+				<h3>Hospedagem Domiciliar</h3>
+			  </div>
+			  <p>Vai viajar? Seu pet fica com carinho, rotina mantida e atenção o tempo todo em ambiente familiar.</p>
+			  <a href="https://wa.me/5521972045256?text=Olá! Gostaria de informações sobre *Hospedagem Domiciliar* 🐾" 
+				 style="display: inline-block; margin-top: 1.5rem; color: var(--primary-pink); font-weight: 700; text-decoration: none;">
+				Agendar agora →
+			  </a>
+			</div>
+
+			<div class="service-card verde">
+			  <div class="card-header">
+				<i class="fa-solid fa-bath fa-2x" style="color: var(--primary-green); margin-bottom: 1rem;"></i>
+				<h3>Banho em Casa</h3>
+			  </div>
+			  <p>Banho no conforto de casa, evitando o estresse do transporte e garantindo higiene com produtos específicos.</p>
+			  <a href="https://wa.me/5521972045256?text=Olá! Gostaria de informações sobre *Banho em Casa* 🛁" 
+				 style="display: inline-block; margin-top: 1.5rem; color: var(--primary-green); font-weight: 700; text-decoration: none;">
+				Agendar agora →
+			  </a>
+			</div>
+
+			<div class="service-card laranja">
+			  <div class="card-header">
+				<div style="margin-bottom: 1rem;">
+				  <i class="fa-solid fa-dog fa-2x" style="color: #f97316;"></i>
+				  <i class="fa-solid fa-cat fa-2x" style="color: #f97316; margin-left: 8px;"></i>
+				</div>
+				<h3>Visitas com Cuidados Especiais</h3>
+			  </div>
+			  <p>Alimentação, medicação e companhia com responsabilidade e relatórios detalhados com fotos para sua tranquilidade.</p>
+			  <a href="https://wa.me/5521972045256?text=Olá! Gostaria de informações sobre *Visitas com Cuidados Especiais* 🍽️" 
+				 style="display: inline-block; margin-top: 1.5rem; color: #f97316; font-weight: 700; text-decoration: none;">
+				Agendar agora →
+			  </a>
+			</div>
+
+		  </div>
+
+		  <div style="text-align: center; margin-top: 1rem;">
+			<a href="https://wa.me/5521972045256" class="btn btn-primary">
+			  <i class="fab fa-whatsapp"></i> Solicitar agendamento online
+			</a>
+		  </div>
+		</section>
+
+		<section class="why-section" style="padding: 40px 24px; background: #fff;">
+		  <div class="why-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 64px; align-items: center; max-width: 1200px; margin: 0 auto;">
+			
+			<div class="why-image">
+			  <img 
+				src="img/why-pet.webp" 
+				alt="Pet feliz e bem cuidado" 
+				style="width: 100%; border-radius: 32px; box-shadow: 0 30px 60px rgba(0,0,0,0.15); object-fit: cover;"
+			  >
+			</div>
+
+			<div class="why-content">
+			  <span class="badge" style="margin-bottom: 8px;">POR QUE ME ESCOLHER</span>
+			  <h2 style="font-size: 2.5rem; font-weight: 900; color: #0f172a; margin-bottom: 8px; line-height: 1.2;">
+				O melhor cuidado para quem você mais ama
+			  </h2>
+
+			  <div class="why-features" style="display: grid; gap: 24px;">
+
+				<div class="why-item" style="display: flex; gap: 20px; align-items: flex-start;">
+				  <div style="background: #ffe4e6; color: #fb7185; padding: 12px; border-radius: 12px;">
+					<i class="fa-regular fa-heart fa-xl"></i>
+				  </div>
+				  <div>
+					<h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;">Amor e Atenção</h3>
+					<p style="color: var(--text-gray); font-size: 0.95rem;">Seu pet tratado como família, com rotina, brincadeiras e companhia de verdade.</p>
+				  </div>
+				</div>
+
+				<div class="why-item" style="display: flex; gap: 20px; align-items: flex-start;">
+				  <div style="background: #f0fdf4; color: #22c55e; padding: 12px; border-radius: 12px;">
+					<i class="fa-regular fa-clock fa-xl"></i>
+				  </div>
+				  <div>
+					<h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;">Flexibilidade</h3>
+					<p style="color: var(--text-gray); font-size: 0.95rem;">Serviços ajustados à rotina do cliente e do pet — horários adaptáveis.</p>
+				  </div>
+				</div>
+
+				<div class="why-item" style="display: flex; gap: 20px; align-items: flex-start;">
+				  <div style="background: #fff7ed; color: #f97316; padding: 12px; border-radius: 12px;">
+					<i class="fa-solid fa-house fa-xl"></i>
+				  </div>
+				  <div>
+					<h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;">Ambiente Familiar</h3>
+					<p style="color: var(--text-gray); font-size: 0.95rem;">Zero estresse de hotel: aconchego, silêncio e segurança, como em casa.</p>
+				  </div>
+				</div>
+
+				<div class="why-item" style="display: flex; gap: 20px; align-items: flex-start;">
+				  <div style="background: #ecfeff; color: #06b6d4; padding: 12px; border-radius: 12px;">
+					<i class="fa-solid fa-shield-heart fa-xl"></i>
+				  </div>
+				  <div>
+					<h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;">Confiança</h3>
+					<p style="color: var(--text-gray); font-size: 0.95rem;">Relatórios detalhados e fotos durante todo o período de cuidados.</p>
+				  </div>
+				</div>
+
+			  </div>
+			</div>
+
+		  </div>
+		</section>
+
+<div id="depoimentos-container"></div>
+
+        <section id="agendamento" class="agendamento-box">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2>Solicite um Agendamento</h2>
+                <p>Preencha os dados e entrarei em contato via WhatsApp</p>
+            </div>
+
+            <form id="form-contato" class="form-grid">
+                <div class="field">
+                    <label>Seu Nome *</label>
+                    <input type="text" id="nome" placeholder="Seu nome completo" required>
+                </div>
+                <div class="field">
+                    <label>Seu Telefone *</label>
+                    <input type="tel" id="telefone" placeholder="(00) 00000-0000" required>
+                </div>
+                <div class="field">
+                    <label>Seu Bairro *</label>
+                    <input type="text" id="bairro" placeholder="Ex: Copacabana" required>
+                </div>
+                <div class="field">
+                    <label>Serviço de Interesse *</label>
+                    <select id="servico" required>
+                        <option value="">Selecione...</option>
+                        <option value="Hospedagem">Hospedagem Domiciliar</option>
+                        <option value="Passeio">Banho em Casa</option>
+                        <option value="PetSitting">Pet Sitting (Visita)</option>
+						<option value="PetSitting">Outros</option>
+                    </select>
+                </div>
+                <div class="field full">
+                    <label>Mensagem/Detalhes do Pet</label>
+                    <textarea id="mensagem" rows="4" placeholder="Conte-me um pouco sobre o que precisa e as necessidades do seu pet, ex.: datas, horário, detalhes do pet..."></textarea>
+                </div>
+                <div class="field full" style="text-align: center;">
+                    <button type="button" onclick="enviarWhatsApp()" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        Enviar solicitação via WhatsApp
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo" style="color: white; margin-bottom: 1rem;">
+                    <img src="img/icone.webp" alt="Logo" class="logo-img" style="filter: brightness(0) invert(1);">
+                    <span>Simone Martins</span>
+                </div>
+                <p style="color: #888;">Cuidado humanizado e profissional para cães e gatos.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Acesso Rápido</h4>
+                <ul style="list-style: none;">
+                    <li><a href="#inicio" style="color: #888; text-decoration: none;">Início</a></li>
+                    <li><a href="servicos.html" style="color: #888; text-decoration: none;">Serviços</a></li>
+                    <li><a href="#agendamento" style="color: #888; text-decoration: none;">Agendar</a></li>
+                </ul>
+            </div>
+            <div id="contato" class="footer-col">
+                <h4>Contato</h4>
+                <p style="color: #888;"><i class="fab fa-whatsapp"></i> (21) 97204-5256</p>
+                <p style="color: #888;"><i class="fab fa-instagram"></i> simonemartins-pet</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Simone Martins Pet Sitter. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+<a href="https://wa.me/5521972045256" class="whatsapp-flutuante" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script src="assets/js/main2.js"></script>
+
+</body>
+</html>

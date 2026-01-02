@@ -1,0 +1,469 @@
+/* ================= VARIÁVEIS E BASE ================= */
+:root {
+  --primary-pink: #fb7185;
+  --primary-green: #22c55e;
+  --whatsapp-green: #25D366;
+  --text-dark: #0f172a;
+  --text-gray: #475569;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: #1e293b; /* Azul escuro para o texto */
+  
+  /* Substitua o background antigo por este: */
+  background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+  background-attachment: fixed;
+}
+
+/* ================= CONTAINER PADRÃO ================= */
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+
+/* ================= COMPONENTES GLOBAIS (BOTÕES E BADGES) ================= */
+.btn {
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.btn-primary {
+  /* Substitua as cores de fundo por estas: */
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.btn-secondary { background: #eee; color: var(--text-dark); }
+.btn-cta { background: #fff; color: var(--text-dark); padding: 14px 26px; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: #ffe4e6;
+  color: #e11d48;
+  padding: .5rem 1rem;
+  border-radius: 999px;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+/* ================= HEADER ================= */
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  
+  /* Altere estas linhas: */
+  background-color: rgba(255, 255, 255, 0.8); /* Branco translúcido */
+  backdrop-filter: blur(10px); /* Efeito de desfoque */
+  box-shadow: 0 2px 15px rgba(2, 132, 199, 0.1);
+  
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo { display: flex; align-items: center; gap: 12px; font-weight: bold; }
+.logo-img { height: 30px; width: auto; }
+
+.menu ul { display: flex; list-style: none; gap: 24px; }
+.menu a { text-decoration: none; color: var(--text-dark); font-weight: 500; }
+.menu a.ativo { color: var(--primary-pink); }
+
+.menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; cursor: pointer; }
+
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  .acoes { display: none; }
+  .menu {
+    display: none;
+    position: absolute;
+    top: 100%; right: 20px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
+  }
+  .menu.show { display: block; }
+  .menu ul { flex-direction: column; padding: 20px; }
+}
+
+/* ================= HERO ================= */
+.hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 3rem;
+}
+
+.hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.1; margin: 1.5rem 0; }
+.highlight-red { color: #ef4444; }
+.highlight-green { color: var(--primary-green); }
+
+.hero-image { position: relative; }
+.hero-image img { width: 100%; border-radius: 2rem; box-shadow: 0 25px 50px rgba(0,0,0,.15); }
+
+.floating-card {
+  position: absolute; bottom: -20px; left: -30px;
+  background: white; padding: 1rem; border-radius: 1rem;
+  display: flex; gap: .75rem; align-items: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+}
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; text-align: center; }
+  .hero-content p { margin: 0 auto; }
+  .hero-buttons { justify-content: center; display: flex; flex-wrap: wrap; gap: 10px; }
+  .floating-card { left: 50%; transform: translateX(-50%); bottom: -20px; }
+}
+
+/* ================= CARDS DE SERVIÇOS ================= */
+.services-grid,
+.servicos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 20px;
+}
+
+
+.service-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: 0.3s;
+  border-top: 6px solid transparent;
+}
+
+.service-card:hover { transform: translateY(-5px); }
+.service-card.rosa { border-top-color: var(--primary-pink); }
+.service-card.verde { border-top-color: var(--primary-green); }
+.service-card.laranja { border-top-color: #f97316; }
+
+.service-card ul { list-style: none; margin: 1.5rem 0; }
+.service-card ul li { margin-bottom: 8px; position: relative; padding-left: 25px; }
+.service-card ul li::before { content: "✓"; position: absolute; left: 0; color: var(--primary-green); font-weight: bold; }
+
+/* ================= FORMULÁRIO ================= */
+.agendamento-box {
+  max-width: 800px; margin: 4rem auto;
+  background: #fff; padding: 3rem; border-radius: 2rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+@media (max-width: 768px) {
+  .agendamento-box {
+    margin-left: 16px;
+    margin-right: 16px;
+    padding: 2rem 1.5rem;
+  }
+}
+
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.field.full { grid-column: span 2; }
+.field input, .field select, .field textarea {
+  width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd;
+}
+
+@media (max-width: 600px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .field.full { grid-column: span 1; }
+}
+
+/* ================= TESTIMONIALS & FOOTER ================= */
+.testimonials-track { display: flex; gap: 2rem; animation: scrollTestimonials 40s linear infinite; }
+@keyframes scrollTestimonials { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.footer {
+  /* Substitua o #1a1a1a por este azul profundo: */
+  background: linear-gradient(180deg, #0c4a6e 0%, #082f49 100%);
+  color: #f0f9ff;
+  padding: 60px 24px 30px;
+}
+
+.footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto; }
+.footer-bottom { text-align: center; border-top: 1px solid #333; margin-top: 3rem; padding-top: 2rem; color: #888; }
+
+/* --- NOVA COR DE FUNDO COM DEGRADÊ AZUL --- */
+.servicos-grid {
+    background: linear-gradient(180deg, #f8fafc 0%, #e0f2fe 100%) !important;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+}
+
+/* Ajuste opcional para o container interno não conflitar */
+.servicos-grid .container {
+    background: transparent !important;
+    margin-top: 1rem !important;
+}
+/* Garante que a seção Sobre mostre o degradê do fundo */
+.why-section {
+    background: transparent !important;
+    padding: 40px 24px !important;
+}
+
+/* Caso queira um degradê específico para esta seção igual ao da Index */
+.why-section {
+    background: linear-gradient(180deg, #f8fafc 0%, #e0f2fe 100%) !important;
+}
+/* ================= BOTÃO WHATSAPP FLUTUANTE ================= */
+
+/* Escondido por padrão (Desktop) */
+.whatsapp-flutuante {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-flutuante:hover {
+  transform: scale(1.1);
+  color: #fff;
+}
+
+/* Exibir apenas em telas pequenas (Mobile) */
+@media (max-width: 768px) {
+  .whatsapp-flutuante {
+    display: flex; /* Torna o botão visível em celulares */
+  }
+}
+/* Depoimentos */
+.testimonials-section {
+  padding: 20px 24px;
+  background: transparent; /* Alterado para transparente para mostrar o degradê azul do body */
+  overflow: hidden;
+  text-align: center;
+}
+
+.testimonials-eyebrow {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #16a34a;
+  margin-bottom: 12px;
+}
+
+.testimonials-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 40px;
+}
+
+.testimonials-wrapper { 
+  position: relative; 
+  width: 100%; 
+  overflow: hidden; 
+}
+
+.testimonials-track {
+  display: flex;
+  gap: 32px;
+  width: max-content;
+  animation: scrollTestimonials 40s linear infinite;
+}
+
+.testimonial-card {
+  background: #ffffff;
+  min-width: 320px;
+  max-width: 320px;
+  padding: 28px 26px;
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(2, 132, 199, 0.08); /* Sombra azulada sutil */
+  text-align: left;
+}
+
+@keyframes scrollTestimonials {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.testimonials-track:hover { animation-play-state: paused; }
+
+@media (max-width: 768px) {
+  .testimonials-title { font-size: 2rem; }
+  .testimonial-card { min-width: 280px; }
+}
+
+/* ================= FAQ PAGE ================= */
+.faq-section {
+    padding: 60px 24px;
+    min-height: 60vh;
+}
+
+.faq-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.faq-btn {
+    padding: 14px 28px;
+    border: 2px solid #0284c7;
+    background: transparent;
+    color: #0284c7;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.faq-btn.active {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+}
+
+.faq-content-box {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    animation: fadeIn 0.5s ease;
+}
+
+.faq-item {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #f0f9ff;
+    padding-bottom: 15px;
+}
+
+.faq-item h3 {
+    color: #0c4a6e;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Estilos para o conteúdo injetado via fetch */
+/* Ajustes específicos para o conteúdo do FAQ */
+.faq-container-interno {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Ajuste Mobile para os itens do FAQ */
+@media (max-width: 768px) {
+    .faq-item {
+        padding: 15px 5px; /* Reduz o espaço interno */
+    }
+
+    .faq-item h3 {
+        font-size: 1.05rem; /* Diminui um pouco o título no celular */
+        align-items: flex-start; /* Alinha o ícone no topo se o texto quebrar linha */
+    }
+
+    .faq-item p {
+        margin-left: 0; /* Remove o recuo no mobile para ganhar espaço horizontal */
+        margin-top: 8px;
+        font-size: 0.95rem;
+        text-align: left;
+    }
+    
+    .faq-nav {
+        flex-direction: column; /* Botões um abaixo do outro no celular */
+        width: 100%;
+    }
+    
+    .faq-btn {
+        width: 100%; /* Botão ocupa a largura toda no celular */
+        justify-content: center;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Configuração para Mobile (Celulares) */
+@media (max-width: 768px) {
+    .floating-card {
+        /* Remove o fundo branco e a sombra */
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        
+        /* Reposiciona no centro inferior da imagem */
+        position: absolute;
+        bottom: 10px; /* Distância do fundo da imagem */
+        left: 50%;
+        transform: translateX(-50%);
+        
+        /* Ajustes internos */
+        padding: 0 !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Esconde apenas o texto no mobile */
+    .floating-card .floating-text {
+        display: none;
+    }
+
+    /* Aumenta um pouco o coração para dar destaque no mobile */
+    .floating-card i {
+        font-size: 2rem; 
+        color: var(--primary-pink);
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); /* Sombra leve apenas no ícone */
+    }
+}

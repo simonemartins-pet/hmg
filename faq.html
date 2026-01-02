@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ & Dicas | Simone Martins</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="topo">
+        <div class="logo">
+            <img src="img/icone.webp" alt="Logo Simone Martins" class="logo-img">
+            <span class="nome">Simone Martins</span>
+        </div>
+        
+        <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+        
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+				 <li><a href="faq.html" class="ativo">FAQ</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <div class="acoes">
+            <a href="index.html#agendamento" class="btn btn-secondary">📅 Agendar</a>
+            <a href="https://wa.me/5521972045256" target="_blank" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+    </header>
+	<section class="servicos-grid" style="background: linear-gradient(135deg, #e0f2fe 100%, #f8fafc 0%) !important; padding-top: 20px !important;">
+
+    <div class="container">
+        <div class="agendamento-box" style="margin-top: 0 !important; padding: 40px; border-radius: 24px; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center;">
+            
+            <span class="badge">DÚVIDAS</span>
+				<h2 style="font-size: 2.5rem; color: #0c4a6e; margin: 15px 0 30px;">Como posso te ajudar?</h2>
+
+				<div class="faq-nav" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; flex-wrap: wrap;">
+					<button class="faq-btn active" onclick="carregarConteudo('perguntas.html', this)">
+						<i class="fas fa-question-circle"></i> Perguntas Frequentes
+					</button>
+					<button class="faq-btn" onclick="carregarConteudo('dicas.html', this)">
+						<i class="fas fa-lightbulb"></i> Dicas Importantes
+					</button>
+				</div>
+
+				<div id="faq-content-container" class="faq-content-box" style="text-align: left; max-width: 800px; margin: 0 auto;">
+					<p style="text-align: center;">Carregando informações...</p>
+				</div>
+				
+			</div>
+		</div>
+	</section>
+
+   <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo" style="color: white; margin-bottom: 1rem;">
+                    <img src="img/icone.webp" alt="Logo" class="logo-img" style="filter: brightness(0) invert(1);">
+                    <span>Simone Martins</span>
+                </div>
+                <p style="color: #888;">Cuidado humanizado e profissional para cães e gatos.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Acesso Rápido</h4>
+                <ul style="list-style: none;">
+                    <li><a href="index.html" style="color: #888; text-decoration: none;">Início</a></li>
+                    <li><a href="servicos.html" style="color: #888; text-decoration: none;">Serviços</a></li>
+                    <li><a href="index.html#agendamento" style="color: #888; text-decoration: none;">Agendar</a></li>
+                </ul>
+            </div>
+            <div id="contato" class="footer-col">
+                <h4>Contato</h4>
+                <p style="color: #888;"><i class="fab fa-whatsapp"></i> (21) 97204-5256</p>
+                <p style="color: #888;"><i class="fab fa-instagram"></i> simonemartins-pet</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Simone Martins Pet Sitter. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5521972045256" class="whatsapp-flutuante">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+<script src="assets/js/main2.js"></script>
+
+</body>
+</html>
