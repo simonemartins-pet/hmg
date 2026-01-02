@@ -467,18 +467,42 @@ body {
     }
 }
 /* ================= DEPOIMENTOS ================= */
+.depoimentos-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 40px 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.depoimentos-wrapper {
+  position: relative;
+  min-height: 180px;
+}
+
 .depoimento {
   opacity: 0;
   transition: opacity 0.6s ease;
   position: absolute;
   inset: 0;
+  text-align: center;
 }
 
 .depoimento.ativo {
   opacity: 1;
   position: relative;
 }
-.depoimentos-wrapper {
-  position: relative;
-  min-height: 160px;
+
+.depoimento-texto {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #374151;
+  margin-bottom: 16px;
 }
+
+.depoimento-autor {
+  color: #0c4a6e;
+  font-weight: 600;
+}
+
