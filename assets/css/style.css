@@ -150,8 +150,7 @@ body {
 }
 
 /* ================= CARDS DE SERVIÇOS ================= */
-.services-grid,
-.servicos-grid {
+.services-grid, .servicos-grid .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
