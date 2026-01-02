@@ -96,3 +96,46 @@ function initHeroSlider() {
         }, 15000);
     }
 }
+/* ================= FAQ – CARREGAMENTO DE ABAS ================= */
+function carregarConteudoFAQ(arquivo, elemento) {
+  // Atualiza estado visual dos botões
+  document.querySelectorAll('.faq-btn').forEach(btn =>
+    btn.classList.remove('active')
+  );
+
+  if (elemento) elemento.classList.add('active');
+
+  // Carrega conteúdo externo
+  fetch(arquivo)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro ao carregar o arquivo');
+      }
+      return response.text();
+    })
+    .then(data => {
+      const container = document.getElementById('faq-content-container');
+      if (container) {
+        container.innerHTML = data;
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      const container = document.getElementById('faq-content-container');
+      if (container) {
+        container.innerHTML = '<p>Erro ao carregar o conteúdo.</p>';
+      }
+    });
+}
+
+/* ================= FAQ – CARREGAMENTO PADRÃO ================= */
+document.addEventListener('DOMContentLoaded', () => {
+  // Só executa se estiver no FAQ
+  const faqContainer = document.getElementById('faq-content-container');
+  if (!faqContainer) return;
+
+  const btnPadrao = document.querySelector('.faq-btn');
+  if (btnPadrao) {
+    carregarConteudoFAQ('perguntas.html', btnPadrao);
+  }
+});
