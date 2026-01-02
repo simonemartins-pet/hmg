@@ -128,14 +128,18 @@ function carregarConteudoFAQ(arquivo, elemento) {
     });
 }
 
-/* ================= FAQ – CARREGAMENTO PADRÃO ================= */
+/* ================= FAQ – CARREGAMENTO AUTOMÁTICO ================= */
 document.addEventListener('DOMContentLoaded', () => {
-  // Só executa se estiver no FAQ
   const faqContainer = document.getElementById('faq-content-container');
   if (!faqContainer) return;
 
-  const btnPadrao = document.querySelector('.faq-btn');
-  if (btnPadrao) {
-    carregarConteudoFAQ('perguntas.html', btnPadrao);
+  // Procura o botão ativo ou o primeiro botão
+  const btnAtivo =
+    document.querySelector('.faq-btn.active') ||
+    document.querySelector('.faq-btn');
+
+  if (btnAtivo) {
+    carregarConteudoFAQ('perguntas.html', btnAtivo);
   }
 });
+
