@@ -133,19 +133,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const faqContainer = document.getElementById('faq-content-container');
   if (!faqContainer) return;
 
+  // Procura o botão ativo ou o primeiro botão
   const btnAtivo =
     document.querySelector('.faq-btn.active') ||
     document.querySelector('.faq-btn');
 
-  if (!btnAtivo) return;
-
-  const arquivo = btnAtivo.dataset.arquivo;
-  if (!arquivo) return;
-
-  carregarConteudoFAQ(arquivo, btnAtivo);
+  if (btnAtivo) {
+    carregarConteudoFAQ('perguntas.html', btnAtivo);
+  }
 });
-
-
 
 /* ================= DEPOIMENTOS ================= */
 document.addEventListener('DOMContentLoaded', () => {
