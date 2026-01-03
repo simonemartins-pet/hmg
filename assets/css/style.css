@@ -26,17 +26,17 @@ body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
   color: #1e293b;
-
-  background: linear-gradient(
-    135deg,
-    #fdf2f8 0%,
-    #fce7f3 50%,
-    #fff1f2 100%
-  );
-
+  background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #fff1f2 100%);
   background-attachment: fixed;
-}
 
+  /* Adicione esta linha: */
+  padding-top: 80px; /* Isso empurra o conteúdo para baixo do header fixo */
+}
+@media (max-width: 768px) {
+  body {
+    padding-top: 70px; /* Um pouco menos de espaço no celular */
+  }
+}
 
 /* ==================================================
    CONTAINER
@@ -104,11 +104,17 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 15px 40px;
-  background: rgba(255,255,255,.8);
+  background: rgba(255,255,255, 0.85); /* Aumentei um pouco a opacidade para leitura */
   backdrop-filter: blur(10px);
-  box-shadow: 0 2px 15px rgba(2,132,199,.1);
-  position: sticky;
+  box-shadow: 0 2px 15px rgba(2,132,199, 0.1);
+  
+  /* Mudança principal aqui: */
+  position: fixed; 
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  
   z-index: 1000;
 }
 
@@ -435,38 +441,44 @@ body {
    DEPOIMENTOS
 ================================================== */
 .testimonials-section {
-  padding: 40px 24px;
+  padding: 20px 24px; /* Reduzido de 40px para 20px (topo/baixo) */
   text-align: center;
 }
-
 .testimonials-title {
   font-size: 2.2rem;
   font-weight: 800;
-  margin-bottom: 40px;
+  margin-top: 10px;    /* Reduz o espaço entre o badge e o título */
+  margin-bottom: 25px; /* Reduzido de 40px para 25px */
 }
-
-@media (max-width: 768px) {
-  .testimonials-title {
-    font-size: 1.7rem;
-  }
-}
-/* ================= DEPOIMENTOS / CARROSSEL ================= */
-
 .depoimentos-card {
   background: #ffffff;
   border-radius: 24px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-  padding: 40px 32px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.06); /* Sombra mais leve */
+  padding: 30px 24px; /* Reduzido para ficar mais compacto */
   max-width: 700px;
   margin: 0 auto;
-  overflow: hidden;
+  position: relative;
 }
-
+.depoimento-texto {
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-gray);
+  margin: 15px 0;
+}
+.depoimento-autor {
+  font-weight: 700;
+  color: var(--primary-pink);
+  display: block;
+}
+.stars {
+  color: #ffb800; /* Cor dourada para as estrelas */
+  margin-bottom: 10px;
+}
 .depoimentos-wrapper {
   position: relative;
   min-height: 220px; /* impede "pulo" de layout */
 }
-
 /* TODOS começam escondidos */
 .depoimento {
   display: none;
@@ -474,11 +486,15 @@ body {
   opacity: 0;
   transition: opacity 0.4s ease;
 }
-
 /* SOMENTE o ativo aparece */
 .depoimento.ativo {
   display: block;
   opacity: 1;
+}
+@media (max-width: 768px) {
+  .testimonials-title {
+    font-size: 1.7rem;
+  }
 }
 
 /* ==================================================
@@ -647,7 +663,7 @@ body {
 ================================================== */
 #depoimentos-container {
   max-width: 1200px;
-  margin: 60px auto;
+  margin: 20px auto;
   padding: 0 24px;
 }
 /* REMOVE QUALQUER SUBLINHADO DO WHATSAPP FLUTUANTE */
@@ -754,15 +770,6 @@ body {
     var(--brand-main),
     var(--brand-dark)
   );
-}
-
-/* Depoimentos */
-.depoimentos-card {
-  box-shadow: 0 20px 50px rgba(151, 7, 71, 0.15);
-}
-
-.depoimento-autor {
-  color: var(--brand-dark);
 }
 
 /* Sobre */
