@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
   initHeroSlider();
   initDepoimentos();
+  initSearch();
 });
+
 
 /* ================= MENU ================= */
 function initMenu() {
@@ -82,56 +84,87 @@ function initFAQ() {
   }
 }
 
-/* ================= HERO SLIDER ================= */
+/* ================= HERO SLIDER (VERSÃO ATUALIZADA COM BULLETS E FADE) ================= */
 function initHeroSlider() {
-  const hero = document.getElementById('heroImage');
-  if (!hero) return;
+    const heroImage = document.getElementById('heroImage');
+    const indicatorsContainer = document.getElementById('heroIndicators');
+    if (!heroImage) return;
 
-  const hoje = new Date();
-  const dia = hoje.getDate();
-  const mes = hoje.getMonth() + 1;
+    const hoje = new Date();
+    const dia = hoje.getDate();
+    const mes = hoje.getMonth() + 1;
 
-  const imagens = {
-    padrao: ['img/pet_hero.webp'],
-    natal: ['img/natal-1.jpg', 'img/natal-2.jpg'],
-    anoNovo: [
-      'img/ano-novo/feliz-ano-novo-1.webp',
-      'img/ano-novo/feliz-ano-novo-2.webp',
-      'img/ano-novo/feliz-ano-novo-3.webp'
-    ],
-    caos: ['img/dia-do-cao/dia-do-cao-1.webp'],
-    gatos: [
-      'img/dia-do-gato/dia-do-gato-1.webp',
-      'img/dia-do-gato/dia-do-gato-2.webp'
-    ]
-  };
+    const imagens = {
+        natal: ['img/natal-1.jpg', 'img/natal-2.jpg'],
+        anoNovo: ['img/ano-novo/feliz-ano-novo-1.webp', 'img/ano-novo/feliz-ano-novo-2.webp', 'img/ano-novo/feliz-ano-novo-3.webp'],
+        dogs: ['img/dia-do-cao/dia-do-cao-1.webp'],
+        gatos: ['img/dia-do-gato/dia-do-gato-1.webp', 'img/dia-do-gato/dia-do-gato-2.webp'],
+        promocoes: [
+            "img/promocoes/promocoes-1.webp", "img/promocoes/promocoes-2.webp",
+            "img/promocoes/promocoes-3.webp", "img/promocoes/promocoes-4.webp",
+            "img/promocoes/promocoes-5.webp", "img/promocoes/promocoes-6.webp",
+            "img/promocoes/promocoes-7.webp", "img/promocoes/promocoes-8.webp",
+            "img/pet_hero.webp"
+        ]
+    };
 
-  let lista = imagens.padrao;
+    let listaAtual = null;
+    if (mes === 12 && dia >= 20 && dia <= 25) listaAtual = imagens.natal;
+    else if ((mes === 12 && dia >= 26) || (mes === 1 && dia <= 2)) listaAtual = imagens.anoNovo;
+    else if ((mes === 4 && dia === 27) || (mes === 7 && dia === 27)) listaAtual = imagens.dogs;
+    else if (mes === 8 && dia === 8) listaAtual = imagens.gatos;
 
-  if (mes === 12 && dia >= 20 && dia <= 25) lista = imagens.natal;
-  else if ((mes === 12 && dia >= 26) || (mes === 1 && dia <= 2))
-    lista = imagens.anoNovo;
-  else if (
-    (mes === 4 && dia === 27) ||
-    (mes === 7 && dia === 27) ||
-    (mes === 8 && dia === 26)
-  )
-    lista = imagens.caos;
-  else if (mes === 8 && dia === 8) lista = imagens.gatos;
+    if (!listaAtual) listaAtual = imagens.promocoes;
 
-  hero.src = lista[0];
-
-  if (lista.length > 1) {
     let index = 0;
-    setInterval(() => {
-      hero.style.opacity = 0;
-      index = (index + 1) % lista.length;
-      setTimeout(() => {
-        hero.src = lista[index];
-        hero.style.opacity = 1;
-      }, 500);
-    }, 15000);
-  }
+
+    // 1. Criar os bullets (pontinhos) se o container existir no HTML
+    if (indicatorsContainer) {
+        indicatorsContainer.innerHTML = "";
+        listaAtual.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.classList.add('indicator');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => mudarImagem(i));
+            indicatorsContainer.appendChild(dot);
+        });
+    }
+
+    // 2. Função principal de troca com efeito fade
+    function mudarImagem(novoIndex) {
+        if (novoIndex === index) return;
+        
+        // Inicia o fade out (precisa do CSS que te enviei antes)
+        heroImage.classList.add('fade-out');
+
+        setTimeout(() => {
+            index = novoIndex;
+            heroImage.src = listaAtual[index];
+
+            // Só volta a aparecer quando a nova imagem carregar
+            heroImage.onload = () => {
+                heroImage.classList.remove('fade-out');
+                
+                // Atualiza bullets
+                if (indicatorsContainer) {
+                    const dots = document.querySelectorAll('.indicator');
+                    dots.forEach(d => d.classList.remove('active'));
+                    if (dots[index]) dots[index].classList.add('active');
+                }
+            };
+        }, 800); // Tempo de espera para a imagem sumir
+    }
+
+    // 3. Configuração inicial
+    heroImage.src = listaAtual[0];
+
+    // 4. Giro automático
+    if (listaAtual.length > 1) {
+        setInterval(() => {
+            let proximo = (index + 1) % listaAtual.length;
+            mudarImagem(proximo);
+        }, 8000);
+    }
 }
 
 /* ================= DEPOIMENTOS ================= */
@@ -292,4 +325,4 @@ function initSearch() {
 }
 
 // Inicializa a busca
-document.addEventListener("DOMContentLoaded", initSearch);
+//document.addEventListener("DOMContentLoaded", initSearch);

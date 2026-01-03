@@ -890,3 +890,50 @@ main {
     cursor: pointer;
     color: #888;
 }
+
+#heroImage {
+    width: 100%;
+    border-radius: 2rem;
+    box-shadow: 0 25px 50px rgba(0,0,0,.15);
+    
+    /* Propriedades da Transição */
+    transition: opacity 0.8s ease-in-out, transform 1.2s ease-in-out;
+    opacity: 1;
+    will-change: opacity; /* Otimiza a performance para o navegador */
+}
+
+/* Estado de saída da imagem */
+.fade-out {
+    opacity: 0 !important;
+    transform: scale(1.02); /* Leve zoom ao trocar para dar profundidade */
+}
+.hero-image {
+    position: relative; /* Necessário para posicionar os pontos sobre a imagem */
+}
+
+.hero-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: var(--primary-pink);
+    transform: scale(1.2);
+    width: 25px; /* Efeito de pílula para o ativo */
+    border-radius: 10px;
+}
