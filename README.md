@@ -1,4 +1,3 @@
-```markdown
 # 🐾 Simone Martins Pet Sitter - Website
 
 ## 📌 Visão Geral
@@ -41,78 +40,93 @@ O projeto é hospedado via **GitHub Pages** e utiliza HTML, CSS e JavaScript par
 
 ---
 
-## 🧭 Navegação
-- Início → `/index.html`
-- Serviços → `/servicos.html`
-- FAQ → `/faq.html`
-- Sobre → `/sobre.html`
-- Agendar → `/#agendamento`
-- WhatsApp → `https://wa.me/5521972045256`
+## ⚙️ Scripts Principais (`main3.js`)
+
+O arquivo **`main3.js`** inicializa todos os recursos dinâmicos do site ao carregar a página:
+
+### 1. **Menu Responsivo**
+- Função: `initMenu()`
+- Alterna a classe `.show` no menu ao clicar no botão `.menu-toggle`.
+
+### 2. **Formulário de Agendamento**
+- Função: `initFormulario()`
+- Captura dados do formulário (`nome`, `telefone`, `bairro`, `servico`, `mensagem`).
+- Gera mensagem formatada e abre o WhatsApp via `wa.me`.
+- Reseta o formulário após envio.
+
+### 3. **FAQ Dinâmico**
+- Função: `initFAQ()`
+- Carrega conteúdo de arquivos HTML em `/partials/` (ex.: `perguntas.html`).
+- Alterna botões ativos e atualiza container `#faq-content-container`.
+
+### 4. **Hero Slider com Troca Automática**
+- Função: `initHeroSlider()`
+- Exibe imagens diferentes conforme **data comemorativa ou promoção**:
+  - **Natal:** 20 a 25 de dezembro
+  - **Ano Novo:** 26 de dezembro a 1º de janeiro
+  - **Dia do Cão:** 27 de abril e 27 de julho
+  - **Dia do Gato:** 8 de agosto
+  - **Promoções:** imagens padrão e campanhas
+- Recursos adicionais:
+  - Bullets de navegação (`#heroIndicators`)
+  - Efeito **fade** na troca de imagens
+  - Giro automático a cada 8 segundos
+
+### 5. **Depoimentos**
+- Função: `initDepoimentos()`
+- Carrega `partials/depoimentos.html`.
+- Inicia carrossel automático com rotação a cada 7 segundos.
+- Suporte a **gestos de swipe** em dispositivos móveis.
+
+### 6. **Busca Interna**
+- Função: `initSearch()`
+- Abre modal de busca (`#searchModal`).
+- Pesquisa em páginas locais (`index.html`, `servicos.html`, `faq.html`, `sobre.html`).
+- Remove header/footer para evitar duplicados.
+- Exibe resultados com link direto para a página encontrada.
 
 ---
 
-## 📂 Seções Principais
-- **Hero Section** com imagem dinâmica (`pet_hero.webp`)
-- **Quem Sou** (apresentação da Simone)
-- **Serviços** detalhados com links diretos para agendamento
-- **Por que me escolher** (diferenciais)
-- **Formulário de Agendamento** integrado ao WhatsApp
-- **Rodapé** com contatos e redes sociais
+## 🔄 Guia Rápido: Adicionar Novas Campanhas ao Hero Slider
 
----
+1. **Adicionar imagens** na pasta correspondente:
+   - `assets/img/promocoes/` → campanhas promocionais
+   - `assets/img/ano-novo/` → Ano Novo
+   - `assets/img/dia-do-cao/` → Dia do Cão
+   - `assets/img/dia-do-gato/` → Dia do Gato
+   - `assets/img/natal/` → Natal
 
-## 🧠 Script de Troca de Imagem (main3.js)
-O arquivo `assets/js/main3.js` contém a lógica para **alterar automaticamente imagens do site** conforme:
-- **Datas comemorativas** (ex.: Ano Novo, Dia do Gato, Dia do Cão)
-- **Promoções programadas**
-- **Campanhas de propaganda**
+2. **Editar o objeto `imagens` em `main3.js`:**
+   ```javascript
+   const imagens = {
+     natal: ['img/natal/natal-1.webp', 'img/natal/natal-2.webp'],
+     anoNovo: ['img/ano-novo/feliz-ano-novo-1.webp'],
+     dogs: ['img/dia-do-cao/dia-do-cao-1.webp'],
+     gatos: ['img/dia-do-gato/dia-do-gato-1.webp'],
+     promocoes: ['img/promocoes/promocoes-1.webp', 'img/promocoes/promocoes-2.webp']
+   };
+   ```
 
-### 🔄 Funcionamento
-1. O script verifica a **data atual**.
-2. Se houver uma imagem correspondente na pasta temática (`ano-novo/`, `dia-do-gato/`, etc.), ela substitui a imagem padrão do **Hero Section** ou de outras áreas.
-3. Caso contrário, mantém a imagem padrão (`pet_hero.webp`).
-4. Também pode ser configurado para exibir **banners promocionais** da pasta `promocoes/`.
+3. **Configurar a data no bloco condicional:**
+   ```javascript
+   if (mes === 12 && dia >= 20 && dia <= 25) listaAtual = imagens.natal;
+   else if ((mes === 12 && dia >= 26) || (mes === 1 && dia <= 1)) listaAtual = imagens.anoNovo;
+   else if (mes === 4 && dia === 27) listaAtual = imagens.dogs;
+   else if (mes === 8 && dia === 8) listaAtual = imagens.gatos;
+   else listaAtual = imagens.promocoes;
+   ```
 
-### 📌 Exemplo de uso
-```javascript
-// Pseudocódigo simplificado
-const hoje = new Date();
-if (hoje.getMonth() === 0 && hoje.getDate() === 1) {
-  trocarImagem("assets/img/ano-novo/banner.webp");
-} else if (hoje.getMonth() === 8 && hoje.getDate() === 4) {
-  trocarImagem("assets/img/dia-do-cao/cao.webp");
-} else {
-  trocarImagem("assets/img/pet_hero.webp");
-}
-```
-
----
-
-## 🎨 Elementos Visuais
-- Logo: `assets/img/icone.webp`
-- Imagem padrão Hero: `assets/img/pet_hero.webp`
-- Imagem seção "Por que me escolher": `assets/img/why-pet.webp`
-- Imagens temáticas em subpastas (`ano-novo`, `dia-do-cao`, `dia-do-gato`, `promocoes`)
+4. **Testar em ambiente local** antes de publicar no GitHub Pages.
 
 ---
 
 ## 🔧 Observações Técnicas
 - **Integração WhatsApp:** via `wa.me`.
-- **Formulário:** sem backend, redireciona para WhatsApp.
-- **Estilos:** `style.css` define layout responsivo.
-- **Scripts:** `main3.js` controla animações e troca dinâmica de imagens.
+- **Formulário:** sem backend, apenas redireciona para WhatsApp.
+- **Estilos:** `style.css` define layout responsivo e efeitos de transição.
+- **Scripts:** `main3.js` controla menu, formulário, FAQ, slider, depoimentos e busca.
 - **Manutenção futura:**
   - Atualizar número de WhatsApp se necessário.
   - Revisar imagens em pastas temáticas antes de cada campanha.
   - Testar responsividade e acessibilidade semestralmente.
   - Atualizar ano no rodapé.
-
----
-
-## ✅ Checklist de Manutenção
-- [ ] Atualizar imagens promocionais em `assets/img/promocoes/`
-- [ ] Revisar datas configuradas no `main3.js`
-- [ ] Testar troca automática de imagens em datas comemorativas
-- [ ] Validar links e integração com WhatsApp
-- [ ] Revisar direitos autorais no rodapé
-```
