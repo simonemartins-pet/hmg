@@ -166,42 +166,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+/* ================= DEPOIMENTOS – CARROSSEL ================= */
 function iniciarCarrosselDepoimentos() {
   const depoimentos = document.querySelectorAll('.depoimento');
   if (!depoimentos.length) return;
 
   let index = 0;
+  let intervalo;
 
-  setInterval(() => {
+  function mostrarDepoimento(novoIndex) {
     depoimentos[index].classList.remove('ativo');
-    index = (index + 1) % depoimentos.length;
+    index = novoIndex;
     depoimentos[index].classList.add('ativo');
-  }, 7000);
-  let startX = 0;
-
-const wrapper = document.querySelector('.depoimentos-wrapper');
-if (!wrapper) return;
-
-wrapper.addEventListener('touchstart', e => {
-  startX = e.touches[0].clientX;
-});
-
-wrapper.addEventListener('touchend', e => {
-  const endX = e.changedTouches[0].clientX;
-  const diff = startX - endX;
-
-  if (Math.abs(diff) < 50) return;
-
-  depoimentos[index].classList.remove('ativo');
-
-  if (diff > 0) {
-    index = (index + 1) % depoimentos.length;
-  } else {
-    index = (index - 1 + depoimentos.length) % depoimentos.length;
   }
 
-  depoimentos[index].classList.add('ativo');
-});
+  function iniciarAuto() {
+    intervalo = setInterval(() => {
+      mostrarDepoimento((index + 1) % depoimentos.length);
+    }, 7000);
+  }
 
+  iniciarAuto();
+
+  let startX = 0;
+  const wrapper = document.querySelector('.depoimentos-wrapper');
+  if (!wrapper) return;
+
+  wrapper.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    clearInterval(intervalo);
+  });
+
+  wrapper.addEventListener('touchend', e => {
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+
+    if (Math.abs(diff) < 50) {
+      iniciarAuto();
+      return;
+    }
+
+    if (diff > 0) {
+      mostrarDepoimento((index + 1) % depoimentos.length);
+    } else {
+      mostrarDepoimento((index - 1 + depoimentos.length) % depoimentos.length);
+    }
+
+    iniciarAuto();
+  });
 }
-
