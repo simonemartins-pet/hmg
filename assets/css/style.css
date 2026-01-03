@@ -384,6 +384,51 @@ body {
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,.05);
 }
+/* ==================================================
+   ESPAÇAMENTO DAS DICAS (FAQ INTERNO)
+================================================== */
+
+/* Espaçamento entre os itens da lista */
+.faq-container-interno {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Cria um espaço uniforme de 25px entre cada dica */
+    padding: 10px 0;
+}
+
+/* Estilo individual de cada dica */
+.faq-item {
+    background: #ffffff; /* Fundo branco para destacar */
+    padding: 20px;       /* Espaço interno para o texto não encostar na borda */
+    border-radius: 15px; /* Bordas arredondadas seguindo o padrão do site */
+    border: 1px solid #e0f2fe; /* Uma borda azul bem clarinha para separar */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); /* Sombra bem sutil */
+    margin-bottom: 10px; /* Margem extra de segurança */
+}
+
+/* Ajuste no título da dica (H3) */
+.faq-item h3 {
+    margin-bottom: 12px; /* Espaço entre o título e o parágrafo abaixo */
+    display: flex;
+    align-items: center;
+    gap: 10px;           /* Espaço entre o ícone e o texto */
+    color: var(--text-dark);
+}
+
+/* Ajuste no texto da dica (P) */
+.faq-item p {
+    color: var(--text-gray);
+    line-height: 1.7;    /* Melhora a leitura aumentando o espaço entre linhas */
+    margin-left: 32px;   /* Alinha o texto abaixo do título, ignorando o ícone */
+}
+
+/* Responsividade para celular */
+@media (max-width: 768px) {
+    .faq-item p {
+        margin-left: 0;  /* No celular, o texto ocupa a largura total para ler melhor */
+    }
+}
+
 
 /* ==================================================
    DEPOIMENTOS
