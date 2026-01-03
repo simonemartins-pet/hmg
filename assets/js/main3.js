@@ -237,47 +237,58 @@ function initSearch() {
         { url: "sobre.html", name: "Sobre a Simone" }
     ];
 
-    input.addEventListener("input", async () => {
-        const query = input.value.toLowerCase();
-        results.innerHTML = "";
+	input.addEventListener("input", async () => {
+		const query = input.value.toLowerCase();
+		results.innerHTML = "";
 
-        if (query.length < 3) return;
+		if (query.length < 3) return;
 
-        for (const page of pages) {
-            try {
-                const res = await fetch(page.url);
-                const html = await res.text();
-                const temp = document.createElement("div");
-                temp.innerHTML = html;
+		// Criamos um conjunto (Set) para armazenar apenas URLs únicas
+		const paginasEncontradas = new Set();
 
-                // Foca a busca apenas no conteúdo principal para ser mais preciso
-                const text = temp.innerText.toLowerCase();
+		for (const page of pages) {
+			try {
+				const res = await fetch(page.url);
+				const html = await res.text();
+				const temp = document.createElement("div");
+				temp.innerHTML = html;
 
-                if (text.includes(query)) {
-                    const li = document.createElement("li");
-                    li.className = "search-result-item";
-                    li.innerHTML = `
-                        <div class="result-link">
-                            🔎 <strong>${page.name}</strong><br>
-                            <small>Conteúdo encontrado nesta página</small>
-                        </div>
-                    `;
+				// OTIMIZAÇÃO: Removemos header e footer da busca para evitar duplicados
+				const header = temp.querySelector('header');
+				const footer = temp.querySelector('footer');
+				if (header) header.remove();
+				if (footer) footer.remove();
 
-                    li.onclick = () => {
-                        fechar();
-                        window.location.href = page.url;
-                    };
-                    results.appendChild(li);
-                }
-            } catch (err) {
-                console.warn("Erro ao ler página:", page.url);
-            }
-        }
+				const text = temp.innerText.toLowerCase();
 
-        if (!results.children.length) {
-            results.innerHTML = `<li class="no-results">Nenhum resultado encontrado para "${query}"</li>`;
-        }
-    });
+				// Verificamos se a palavra existe E se a página já não foi adicionada
+				if (text.includes(query) && !paginasEncontradas.has(page.url)) {
+					paginasEncontradas.add(page.url); // Marca como encontrada
+
+					const li = document.createElement("li");
+					li.className = "search-result-item";
+					li.innerHTML = `
+						<div class="result-link">
+							🔎 <strong>${page.name}</strong><br>
+							<small>Palavra encontrada no conteúdo</small>
+						</div>
+					`;
+
+					li.onclick = () => {
+						fechar();
+						window.location.href = page.url;
+					};
+					results.appendChild(li);
+				}
+			} catch (err) {
+				console.warn("Erro ao buscar em:", page.url);
+			}
+		}
+
+		if (results.children.length === 0) {
+			results.innerHTML = `<li class="no-results">Nenhum resultado exclusivo para "${query}"</li>`;
+		}
+	});
 }
 
 // Inicializa a busca
