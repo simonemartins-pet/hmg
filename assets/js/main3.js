@@ -319,7 +319,7 @@ function initSearch() {
 		}
 
 		if (results.children.length === 0) {
-			results.innerHTML = `<li class="no-results">Nenhum resultado exclusivo para "${query}"</li>`;
+			results.innerHTML = `<li class="no-results">Nenhum resultado encontrado para "${query}"</li>`;
 		}
 	});
 }
