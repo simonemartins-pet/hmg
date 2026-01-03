@@ -199,3 +199,86 @@ function iniciarCarrosselDepoimentos() {
     auto();
   });
 }
+
+function initSearch() {
+    const openBtn = document.getElementById("openSearch");
+    const closeBtn = document.getElementById("closeSearch");
+    const modal = document.getElementById("searchModal");
+    const input = document.getElementById("searchInput");
+    const results = document.getElementById("searchResults");
+
+    if (!openBtn || !modal) return;
+
+    // Abrir modal
+    openBtn.onclick = (e) => {
+        e.preventDefault();
+        modal.style.display = "flex";
+        input.focus();
+    };
+
+    // Fechar modal
+    const fechar = () => {
+        modal.style.display = "none";
+        input.value = "";
+        results.innerHTML = "";
+    };
+
+    closeBtn.onclick = fechar;
+    
+    // Fechar ao clicar fora do modal
+    window.onclick = (e) => {
+        if (e.target === modal) fechar();
+    };
+
+    const pages = [
+        { url: "index.html", name: "Página Inicial" },
+        { url: "servicos.html", name: "Nossos Serviços" },
+        { url: "faq.html", name: "Dúvidas Frequentes" },
+        { url: "sobre.html", name: "Sobre a Simone" }
+    ];
+
+    input.addEventListener("input", async () => {
+        const query = input.value.toLowerCase();
+        results.innerHTML = "";
+
+        if (query.length < 3) return;
+
+        for (const page of pages) {
+            try {
+                const res = await fetch(page.url);
+                const html = await res.text();
+                const temp = document.createElement("div");
+                temp.innerHTML = html;
+
+                // Foca a busca apenas no conteúdo principal para ser mais preciso
+                const text = temp.innerText.toLowerCase();
+
+                if (text.includes(query)) {
+                    const li = document.createElement("li");
+                    li.className = "search-result-item";
+                    li.innerHTML = `
+                        <div class="result-link">
+                            🔎 <strong>${page.name}</strong><br>
+                            <small>Conteúdo encontrado nesta página</small>
+                        </div>
+                    `;
+
+                    li.onclick = () => {
+                        fechar();
+                        window.location.href = page.url;
+                    };
+                    results.appendChild(li);
+                }
+            } catch (err) {
+                console.warn("Erro ao ler página:", page.url);
+            }
+        }
+
+        if (!results.children.length) {
+            results.innerHTML = `<li class="no-results">Nenhum resultado encontrado para "${query}"</li>`;
+        }
+    });
+}
+
+// Inicializa a busca
+document.addEventListener("DOMContentLoaded", initSearch);

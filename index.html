@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simone Martins | Pet Sitter</title>
 
+	  <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+	
+	  <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -27,7 +33,7 @@
                 <li><a href="servicos.html">Serviços</a></li>
 				 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
-
+				<li><a href="#" id="openSearch"><i class="fas fa-search"></i></a></li>
             </ul>
         </nav>
 
@@ -269,6 +275,16 @@
   <i class="fab fa-whatsapp"></i>
 </a>
 
+<div id="searchModal">
+    <div class="search-content">
+        <button id="closeSearch">&times;</button>
+        <h3>O que você procura?</h3>
+        <input type="text" id="searchInput" placeholder="Digite pelo menos 3 letras...">
+        <ul id="searchResults"></ul>
+    </div>
+</div>
+
+<!-- ================= JS EXTERNO ================= -->
 <script src="assets/js/main3.js" defer></script>
 
 </body>
