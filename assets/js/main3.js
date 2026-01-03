@@ -110,7 +110,7 @@ function initHeroSlider() {
 
     let listaAtual = null;
     if (mes === 12 && dia >= 20 && dia <= 25) listaAtual = imagens.natal;
-    else if ((mes === 12 && dia >= 26) || (mes === 1 && dia <= 2)) listaAtual = imagens.anoNovo;
+    else if ((mes === 12 && dia >= 26) || (mes === 1 && dia <= 3)) listaAtual = imagens.anoNovo;
     else if ((mes === 4 && dia === 27) || (mes === 7 && dia === 27)) listaAtual = imagens.dogs;
     else if (mes === 8 && dia === 8) listaAtual = imagens.gatos;
 
