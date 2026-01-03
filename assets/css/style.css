@@ -396,14 +396,15 @@ body {
     padding: 10px 0;
 }
 
-/* Estilo individual de cada dica */
+/* No seu style.css, procure e ajuste para que fique assim: */
 .faq-item {
-    background: #ffffff; /* Fundo branco para destacar */
-    padding: 20px;       /* Espaço interno para o texto não encostar na borda */
-    border-radius: 15px; /* Bordas arredondadas seguindo o padrão do site */
-    border: 1px solid #e0f2fe; /* Uma borda azul bem clarinha para separar */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); /* Sombra bem sutil */
-    margin-bottom: 10px; /* Margem extra de segurança */
+    margin-bottom: 25px; /* Espaço entre os boxes */
+    border-bottom: none;  /* REMOVA a borda de linha antiga se for usar o estilo de caixa */
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    border: 1px solid #e0f2fe; /* Borda suave ao redor de todo o item */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
 
 /* Ajuste no título da dica (H3) */
