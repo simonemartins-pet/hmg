@@ -2,9 +2,16 @@
    VARIÁVEIS E BASE
 ================================================== */
 :root {
-  --primary-pink: #fb7185;
+  /* Nova identidade visual */
+  --brand-dark:  #970747; /* tom mais escuro */
+  --brand-main:  #B6517E; /* tom intermediário */
+  --brand-light: #CB83A3; /* tom mais claro */
+
+  /* Cores de apoio */
   --primary-green: #22c55e;
   --whatsapp-green: #25D366;
+
+  /* Texto */
   --text-dark: #0f172a;
   --text-gray: #475569;
 }
@@ -19,9 +26,17 @@ body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
   color: #1e293b;
-  background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+
+  background: linear-gradient(
+    135deg,
+    #fdf2f8 0%,
+    #fce7f3 50%,
+    #fff1f2 100%
+  );
+
   background-attachment: fixed;
 }
+
 
 /* ==================================================
    CONTAINER
@@ -65,8 +80,8 @@ body {
 }
 
 .btn-secondary {
-  background: #eee;
-  color: var(--text-dark);
+  background: linear-gradient(135deg, #EB99CD 0%, #AB5E9F 100%);
+  color: #fff;
 }
 
 .badge {
@@ -168,7 +183,8 @@ body {
   margin: 0 auto;
   padding: 4rem 2rem;
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  /* Alterado: Diminuímos o texto e aumentamos a coluna da imagem */
+  grid-template-columns: 1fr 1.1fr; 
   gap: 3rem;
   align-items: center;
 }
@@ -180,27 +196,36 @@ body {
   margin: 1.5rem 0;
 }
 
-.highlight-red { color: #ef4444; }
+.highlight-red { color: var(--primary-green); }
 .highlight-green { color: var(--primary-green); }
 
 .hero-image img {
   width: 100%;
+  /* Opcional: faz a imagem crescer 5% além do limite da coluna sem mover o layout */
+  transform: scale(1.05); 
   border-radius: 2rem;
   box-shadow: 0 25px 50px rgba(0,0,0,.15);
+  transition: transform 0.3s ease;
 }
 
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
     text-align: center;
+    /* Alterado: Reduzimos o padding lateral de 2rem para 1rem para a imagem ganhar espaço */
+    padding: 2rem 1rem; 
+  }
+
+  .hero-image img {
+    /* Garante que a imagem use 100% da largura disponível no celular */
+    width: 100%;
+    transform: scale(1); /* Resetamos o scale para não cortar nas bordas do celular */
   }
 }
-
 /* ==================================================
    SERVIÇOS
 ================================================== */
 .servicos-grid {
-  background: linear-gradient(180deg, #f8fafc 0%, #e0f2fe 100%);
   padding: 40px 0;
 }
 
@@ -224,8 +249,8 @@ body {
   transform: translateY(-5px);
 }
 .service-card.rosa { border-top-color: var(--primary-pink); }
-.service-card.verde { border-top-color: var(--primary-green); }
-.service-card.laranja { border-top-color: #f97316; }
+.service-card.verde { border-top-color: var(--primary-green) !important; }
+.service-card.laranja { border-top-color: #f97316 !important; }
 
 .service-card ul {
   list-style: none;
@@ -611,4 +636,140 @@ body {
     margin-left: auto;
     margin-right: auto;
   }
+}
+/* ==================================================
+   AJUSTES DE CORES – NOVA PALETA (COMPLEMENTO)
+================================================== */
+
+/* Botões principais */
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--brand-main),
+    var(--brand-dark)
+  );
+  box-shadow: 0 6px 20px rgba(151, 7, 71, 0.35);
+}
+
+/* Badge */
+.badge {
+  background: rgba(203, 131, 163, 0.25);
+  color: var(--brand-dark);
+}
+
+/* Menu ativo */
+.menu a.ativo {
+  color: var(--brand-main);
+}
+
+/* Hero */
+.hero h1 {
+  color: var(--brand-dark);
+}
+
+.highlight-red {
+  color: var(--brand-main);
+}
+
+/* Serviços */
+.service-card.rosa {
+  border-top-color: var(--brand-main);
+}
+
+.service-card.verde {
+  border-top-color: var(--brand-light);
+}
+
+.service-card.laranja {
+  border-top-color: var(--brand-dark);
+}
+
+.service-card li::before {
+  color: var(--brand-main);
+}
+
+/* Formulário */
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--brand-main);
+  box-shadow: 0 0 0 2px rgba(182, 81, 126, 0.25);
+}
+
+/* FAQ */
+.faq-btn {
+  border-color: var(--brand-main);
+  color: var(--brand-main);
+}
+
+.faq-btn.active {
+  background: linear-gradient(
+    135deg,
+    var(--brand-main),
+    var(--brand-dark)
+  );
+}
+
+/* Depoimentos */
+.depoimentos-card {
+  box-shadow: 0 20px 50px rgba(151, 7, 71, 0.15);
+}
+
+.depoimento-autor {
+  color: var(--brand-dark);
+}
+
+/* Sobre */
+.about-title {
+  color: var(--brand-dark);
+}
+
+/* Footer */
+.footer {
+  background: linear-gradient(
+    180deg,
+    var(--brand-dark),
+    #5f0430
+  );
+}
+
+.footer-col a:hover {
+  color: var(--brand-light);
+}
+
+/* Floating card (mobile hero) */
+@media (max-width: 768px) {
+  .floating-card i {
+    color: var(--brand-main);
+  }
+}
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+/* ==================================================
+   AJUSTES MOBILE - HERO BUTTONS (OPÇÃO 3)
+================================================== */
+@media (max-width: 900px) {
+    .hero-buttons {
+        display: flex;
+        flex-direction: column; /* Empilha os botões */
+        gap: 15px;              /* Espaço entre os botões */
+        margin-top: 2rem;       /* Espaço entre o texto e os botões */
+        align-items: center;    /* Centraliza os botões no meio da tela */
+    }
+
+    .hero-buttons .btn {
+        width: 100%;            /* Faz o botão ocupar a largura disponível */
+        max-width: 300px;       /* Limita para não ficar largo demais em tablets */
+        justify-content: center; /* Centraliza o texto/ícone dentro do botão */
+    }
 }
